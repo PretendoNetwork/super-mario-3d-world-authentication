@@ -12,9 +12,13 @@ var nexServer *nex.Server
 
 func main() {
 	nexServer = nex.NewServer()
-	nexServer.SetPrudpVersion(1)
+	nexServer.SetPRUDPVersion(1)
 	nexServer.SetPRUDPProtocolMinorVersion(2)
-	nexServer.SetNexVersion(30400)
+	nexServer.SetDefaultNEXVersion(&nex.NEXVersion{
+		Major: 3,
+		Minor: 4,
+		Patch: 0,
+	})
 	nexServer.SetKerberosPassword(os.Getenv("KERBEROS_PASSWORD"))
 	nexServer.SetAccessKey("86a89872")
 
